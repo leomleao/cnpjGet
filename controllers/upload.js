@@ -1,7 +1,7 @@
 const uuidv4 = require('uuid/v4');
 const { StringDecoder } = require('string_decoder');
 const decoder = new StringDecoder('utf8');
-const Cnpj = require('../models/Cnpj');
+// const Cnpj = require('../models/Cnpj');
 const fs = require('fs');
 const path = require('path');
 const CNPJ = require("cpf_cnpj").CNPJ;
