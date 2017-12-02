@@ -1,14 +1,37 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
-const uuidv4 = require('uuid/v4');
-const { StringDecoder } = require('string_decoder');
-const decoder = new StringDecoder('utf8');
-const excel = require('node-excel-export');
+const mongoose = require('mongoose');
 
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 
+const cnpjController = require('./controllers/cnpj');
+const homeController = require('./controllers/home');
+const uploadController = require('./controllers/upload');
+
+
+
 const app = express();
+
+
+/**
+ * Connect to MongoDB.
+ */
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGODB_URI);
+mongoose.connection.on('error', (err) => {
+  console.error(err);
+  console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
+  process.exit();
+});
+
+
+
+
+app.set('views', path.join(__dirname, 'views'));
+
+
+
 
 app.use(fileUpload());
 
@@ -18,42 +41,14 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => res.render('pages/index'));
+app.get('/', homeController.index);
 
-app.get('/upload', (req, res) => res.render('pages/upload'));
+app.get('/upload', cnpjController.index);
 
-app.get('/result/:uuid', (req, res, req) => res.render('pages/upload'));
+app.get('/result/:uuid', uploadController.index);
 
-
-
-
-app.post('/upload', function(req, res) {
-	if (!req.files)
-		return res.status(400).send('No files were uploaded.');
-
-	let uuid = uuidv4();
-
-	// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-	let cnpjsFile = req.files.cnpjsFile;
-
-	// Use the mv() method to place the file somewhere on your server
-	let folderDest = path.resolve(__dirname, 'files/' + uuid);
-	
-
-	cnpjsList = decoder.write(req.files.cnpjsFile.data);
-	cnpjsArray = cnpjsList.split("\n");
-	console.debug(cnpjsArray);
-
-	cnpjsFile.mv(folderDest, function(err) {
-
-	if (err)
-
-		return res.status(500).send(err);
-
-	res.send('File uploaded! With code' + uuid);
+app.post('/upload', uploadController.upload );
 
 
-	});
-});
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
