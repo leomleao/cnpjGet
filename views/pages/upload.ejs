@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+
+  <% include ../partials/nav.ejs %>
+
+  <div class="jumbotron text-center">
+    <div class="container">
+      <a href="/" class="lang-logo">
+        <img src="/lang-logo.png">
+      </a>
+      <h1>uloadfiles</h1>
+      <form ref='uploadForm' 
+        id='uploadForm' 
+        action='http://localhost:5000/upload' 
+        method='post' 
+        encType="multipart/form-data">
+          <input type="file" name="cnpjsFile" />
+          <input type='submit' value='Upload!' />
+      </form>     
+    </div>
+  </div>
+
+</body>
+</html>

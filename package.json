@@ -1,5 +1,5 @@
 {
-  "name": "node-js-getting-started",
+  "name": "oLeoEhZica",
   "version": "0.3.0",
   "description": "A sample Node.js app using Express 4",
   "engines": {
@@ -12,9 +12,16 @@
   },
   "dependencies": {
     "ejs": "^2.5.6",
-    "express": "^4.15.2"
+    "exceljs": "^0.7.1",
+    "express": "^4.15.2",
+    "express-fileupload": "^0.3.0",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-notify": "^3.0.0",
     "request": "^2.81.0",
     "tape": "^4.7.0"
   },
