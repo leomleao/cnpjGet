@@ -11,11 +11,15 @@
     "test": "node test.js"
   },
   "dependencies": {
+    "async": "^2.6.0",
+    "cpf_cnpj": "^0.2.0",
+    "dotenv": "^4.0.0",
     "ejs": "^2.5.6",
     "exceljs": "^0.7.1",
     "express": "^4.15.2",
     "express-fileupload": "^0.3.0",
     "mongoose": "^4.13.5",
+    "request": "^2.83.0",
     "uuid": "^3.1.0"
   },
   "devDependencies": {

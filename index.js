@@ -2,6 +2,8 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const mongoose = require('mongoose');
 
+const dotenv = require('dotenv');
+
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 
@@ -10,20 +12,19 @@ const homeController = require('./controllers/home');
 const uploadController = require('./controllers/upload');
 
 
-
 const app = express();
 
+
+/**
+ * Load environment variables from .env file, where API keys and passwords are configured.
+ */
+dotenv.load({ path: '.env' });
 
 /**
  * Connect to MongoDB.
  */
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI);
-mongoose.connection.on('error', (err) => {
-  console.error(err);
-  console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
-  process.exit();
-});
+mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 
 
 
@@ -43,9 +44,9 @@ app.set('view engine', 'ejs');
 
 app.get('/', homeController.index);
 
-app.get('/upload', cnpjController.index);
+app.get('/upload', uploadController.index);
 
-app.get('/result/:uuid', uploadController.index);
+app.get('/result/:uuid', uploadController.file);
 
 app.post('/upload', uploadController.upload );
 

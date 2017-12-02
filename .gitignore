@@ -2,6 +2,9 @@
 node_modules
 npm-debug.log
 
+files/*
+!files/.gitkeep
+
 # Local development
 *.env
 .env
