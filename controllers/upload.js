@@ -149,7 +149,10 @@ exports.upload = (req, res) => {
 	}, function(err, results) {
 		 workbook.xlsx.writeFile(path.resolve(__dirname, '../files/' + uuid + '.xlsx'))
 	    .then(function() {
-	    	res.send('<a href="' + fullUrl + '/result/' + uuid + '">Planilha com sua consulta</a>' );
+	    	res.render('pages/upload', {
+			    title: 'Consulta Gerada',
+			    url: fullUrl + '/result/' + uuid
+			 });	    	
 	    });
 	  
 	});	

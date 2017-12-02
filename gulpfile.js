@@ -13,7 +13,7 @@ gulp.task('default', function() {
 		exec: 'node --inspect',
 		script: 'index.js',
 		debug: true,
-		ext: 'js, ejs',
+		ext: 'js, ejs, css',
 		verbose: true
 	}).on('restart', function(){
 		// when the app has restarted, run livereload.
