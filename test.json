@@ -1,0 +1,95 @@
+{
+  "atividade_principal": [
+    {
+      "text": "Fabricação de outros equipamentos e aparelhos elétricos não especificados anteriormente",
+      "code": "27.90-2-99"
+    }
+  ],
+  "data_situacao": "12/05/2005",
+  "nome": "WAGO ELETROELETRONICOS LTDA.",
+  "uf": "SP",
+  "telefone": "(11) 4591-0199",
+  "email": "joelma.rossignatti@wago.com",
+  "atividades_secundarias": [
+    {
+      "text": "Fabricação de equipamentos de informática",
+      "code": "26.21-3-00"
+    },
+    {
+      "text": "Fabricação de periféricos para equipamentos de informática",
+      "code": "26.22-1-00"
+    },
+    {
+      "text": "Comércio atacadista de equipamentos de informática",
+      "code": "46.51-6-01"
+    },
+    {
+      "text": "Comércio varejista especializado de equipamentos e suprimentos de informática",
+      "code": "47.51-2-01"
+    },
+    {
+      "text": "Consultoria em tecnologia da informação",
+      "code": "62.04-0-00"
+    },
+    {
+      "text": "Suporte técnico, manutenção e outros serviços em tecnologia da informação",
+      "code": "62.09-1-00"
+    },
+    {
+      "text": "Reparação e manutenção de computadores e de equipamentos periféricos",
+      "code": "95.11-8-00"
+    },
+    {
+      "text": "Treinamento em desenvolvimento profissional e gerencial",
+      "code": "85.99-6-04"
+    },
+    {
+      "text": "Serviços de engenharia",
+      "code": "71.12-0-00"
+    },
+    {
+      "text": "Fabricação de material elétrico para instalações em circuito de consumo",
+      "code": "27.32-5-00"
+    }
+  ],
+  "qsa": [
+    {
+      "qual": "37-Sócio Pessoa Jurídica Domiciliado no Exterior",
+      "qual_rep_legal": "17-Procurador",
+      "nome_rep_legal": "ANDREAS SANDEN",
+      "pais_origem": "ALEMANHA",
+      "nome": "WAGO HOLDING GMBH"
+    },
+    {
+      "qual": "05-Administrador",
+      "nome": "MARCOS VINICIUS SILVA SALMI"
+    },
+    {
+      "qual": "37-Sócio Pessoa Jurídica Domiciliado no Exterior",
+      "qual_rep_legal": "17-Procurador",
+      "nome_rep_legal": "ANDREAS SANDEN",
+      "pais_origem": "ALEMANHA",
+      "nome": "WAGO AUSLANDSBETEILIGUNGS GMBH"
+    }
+  ],
+  "situacao": "ATIVA",
+  "bairro": "JARDIM ERMIDA I",
+  "logradouro": "R TRIPOLI (LOT M II P I LOGISTICO)",
+  "numero": "640",
+  "cep": "13.212-217",
+  "municipio": "JUNDIAI",
+  "abertura": "12/05/2005",
+  "natureza_juridica": "206-2 - Sociedade Empresária Limitada",
+  "fantasia": "WAGO",
+  "cnpj": "07.384.827/0001-95",
+  "ultima_atualizacao": "2017-10-02T21:10:17.021Z",
+  "status": "OK",
+  "tipo": "MATRIZ",
+  "complemento": "",
+  "efr": "",
+  "motivo_situacao": "",
+  "situacao_especial": "",
+  "data_situacao_especial": "",
+  "capital_social": "24737500.00",
+  "extra": {}
+}

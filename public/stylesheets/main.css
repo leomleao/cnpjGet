@@ -29,6 +29,10 @@ body  {
     .lang-logo img {
       max-width: 100%; }
 
+.error {
+  font-size: 20em;
+}      
+
 
 
 /*.custom-file-control:before{

@@ -46,6 +46,8 @@ app.get('/', homeController.index);
 
 app.get('/upload', uploadController.index);
 
+app.get('/test', uploadController.test);
+
 app.get('/result/:uuid', uploadController.file);
 
 app.post('/upload', uploadController.upload );
