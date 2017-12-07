@@ -6,13 +6,14 @@ const cnpjSchema = new mongoose.Schema({
   status: String,
   ultima_atualizacao: String,
   cnpj: String,   
+  cnpjFormatted: String,   
   tipo: String,   
   abertura: String,  
   nome: String,  
   fantasia: String,
   atividade_principal: {
     code: String,
-    text:String
+    text: String
   },
   atividades_secundarias: Array,
   natureza_juridica: String,
@@ -32,13 +33,7 @@ const cnpjSchema = new mongoose.Schema({
   situacao_especial: String,
   data_situacao_especial: String,
   capital_social: String,
-  qsa: {
-    nome: String,
-    qual: String,
-    pais_origem: String,
-    nome_rep_legal: String,
-    qual_rep_legal: String
-  }
+  qsa: Array
 
 }, { timestamps: true });
 

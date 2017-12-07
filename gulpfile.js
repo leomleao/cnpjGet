@@ -10,7 +10,8 @@ gulp.task('default', function() {
 	// configure nodemon
 	nodemon({
 		// the script to run the app
-		exec: 'node --inspect',
+		// exec: 'node --inspect',
+		exec: 'node ',
 		script: 'index.js',
 		debug: true,
 		ext: 'js, ejs, css',
