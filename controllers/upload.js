@@ -4,12 +4,14 @@ const decoder = new StringDecoder('utf8');
 // const Cnpj = require('../models/Cnpj');
 const fs = require('fs');
 const path = require('path');
-const CNPJ = require("cpf_cnpj").CNPJ;
+const CNPJValidator = require("cpf_cnpj").CNPJ;
 const Excel = require('exceljs');
 const request = require('request') // https://www.npmjs.com/package/request
     , async = require('async'); // https://www.npmjs.com/package/asyn
 
 var wago = JSON.parse(fs.readFileSync('test.json', 'utf8'));
+
+var Cnpj = require('../models/cnpj');
 
 /**
  * GET /
@@ -51,6 +53,63 @@ exports.file = (req, res) => {
     res.download(file); // Set disposition and send it.
 };
 
+/**
+ * POST /
+ * upload page.
+ */
+exports.uploadDB = (req, res) => {
+	let fullUrl = req.protocol + '://' + req.get('host');
+  if (!req.files)
+		return res.status(400).send('No files were uploaded.');
+
+	let uuid = uuidv4();
+
+	// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+	let cnpjsFile = req.files.cnpjsFile;
+
+	cnpjsList = decoder.write(req.files.cnpjsFile.data);
+	cnpjsArray = cnpjsList.split("\n");
+
+	var validCnpjs = [];
+	var savedCnpjs = [];
+
+	for (var i = cnpjsArray.length - 1; i >= 0; i--) {
+		if (CNPJValidator.isValid(cnpjsArray[i])) {
+			validCnpjs.push(cnpjsArray[i]);
+
+			var company = new Cnpj({
+			  uuid: uuid,
+			  cnpj: CNPJValidator.strip(cnpjsArray[i])
+
+			});
+
+			company.save(function(err) {
+			  if (err) throw err;
+			  savedCnpjs.push(cnpjsArray[i]);
+
+			  console.log("saved " + savedCnpjs.length + " out of " + cnpjsArray.length)
+
+
+			  console.log('Cnpj saved successfully!', cnpjsArray[i]);
+			});
+
+		}		
+	}  
+
+	return res.status(200).send('Finished');  
+		
+
+	 // workbook.xlsx.writeFile(path.resolve(__dirname, '../files/' + uuid + '.xlsx'))
+  //   .then(function() {
+  //   	res.render('pages/upload', {
+		//     title: 'Consulta Gerada',
+		//     url: fullUrl + '/result/' + uuid
+		// });	    	
+  //   });
+
+};
+
+
 
 /**
  * POST /
@@ -77,11 +136,12 @@ exports.upload = (req, res) => {
 	var myUrls = [];
 
 	for (var i = cnpjsArray.length - 1; i >= 0; i--) {
-		if (CNPJ.isValid(cnpjsArray[i])) {
+		if (CNPJValidator.isValid(cnpjsArray[i])) {
 			validCnpjs.push(cnpjsArray[i]);
-			myUrls.push('https://www.receitaws.com.br/v1/cnpj/' + CNPJ.strip(cnpjsArray[i]))
+			myUrls.push('https://www.receitaws.com.br/v1/cnpj/' + CNPJValidator.strip(cnpjsArray[i]))
 		}		
 	}
+
 	var workbook = new Excel.Workbook();
 	workbook.creator = 'SuperLEO';
 
@@ -283,6 +343,8 @@ exports.upload = (req, res) => {
 				}
 			}
 	    }
+
+
 	    catch( err ) {
 	        // Return the error as JSON
 	        res.render('pages/upload', {

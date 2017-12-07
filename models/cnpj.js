@@ -32,13 +32,7 @@ const cnpjSchema = new mongoose.Schema({
   situacao_especial: String,
   data_situacao_especial: String,
   capital_social: String,
-  qsa: {
-    nome: String,
-    qual: String,
-    pais_origem: String,
-    nome_rep_legal: String,
-    qual_rep_legal: String
-  }
+  qsa: Array
 
 }, { timestamps: true });
 
