@@ -11,10 +11,7 @@ const cnpjSchema = new mongoose.Schema({
   abertura: String,  
   nome: String,  
   fantasia: String,
-  atividade_principal: {
-    code: String,
-    text: String
-  },
+  atividade_principal: Array,
   atividades_secundarias: Array,
   natureza_juridica: String,
   logradouro: String,
